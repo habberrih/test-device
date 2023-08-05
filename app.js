@@ -2,11 +2,13 @@ const express = require("express");
 const app = express();
 
 // Middlewares
-app.use(express.json());
+app.use(express.text());
 
-app.route("/api").get((req, res) => {
-  const data = req.body;
-
-  res.send(data);
+app.route("/api").post((req, res) => {
+  let data = req.body;
+   console.log(data)
+res.set('content-type', 'text/plain'); 
+  res.send(data)
 });
+
 module.exports = app;
